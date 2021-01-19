@@ -1,0 +1,31 @@
+{
+  "name":"Employee",
+  "namespace":"com.gopinnath.transformer.example.avro",
+  "type": "record",
+  "fields": [
+      {
+        "name": "id",
+        "type": "int"
+      },
+      {
+        "name": "displayName",
+        "type": "string"
+      },
+      {
+        "name": "salary",
+        "type": "double"
+      },
+      {
+        "name": "dateOfJoining",
+        "type": "string"
+      },
+      {
+      	"name": "departments",
+      	"type": { 
+      		"type": "array",
+			"items": "string",
+			"default": []
+		}
+      }
+   ]
+}

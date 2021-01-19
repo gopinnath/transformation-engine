@@ -1,0 +1,23 @@
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: latest
+      group-id: com.gopinnath.transformer.example-data-simulator
+
+kafka:
+  producer:
+    employee:
+      topic: source-employee-communications
+    department:
+      topic: source-department-communications
+  consumer:
+    usa:
+      employee:    
+        topic: usa-employee-updates
+      department:    
+        topic: usa-department-updates
+    india:
+      employee:    
+        topic: india-employee-updates
+      department:    
+        topic: india-department-updates

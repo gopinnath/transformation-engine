@@ -1,0 +1,47 @@
+{
+  "name": "Envelop",
+  "type": "record",
+  "namespace": "com.gopinnath.transformer.example.avro",
+  "fields": [
+    {
+      "name": "header",
+      "type": {
+        "name": "Header",
+        "type": "record",
+        "fields": [
+          {
+            "name": "action",
+            "type": "string"
+          },
+          {
+            "name": "performant",
+            "type": "string"
+          },
+          {
+            "name": "tracingId",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "body",
+      "type": {
+        "name": "Body",
+        "type": "record",
+        "fields": [
+          {
+            "name": "pre",
+            "type": ["null","Employee","Department"],
+            "default": null
+          },
+          {
+            "name": "post",
+            "type": ["null","Employee","Department"],
+            "default": null
+          }
+        ]
+      }
+    }
+  ]
+}

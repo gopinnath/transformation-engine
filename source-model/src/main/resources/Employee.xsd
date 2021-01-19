@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.gopinnath.com/transformer/example/Employee"
+	xmlns:tns="http://www.gopinnath.com/transformer/example/Employee"
+	elementFormDefault="qualified">
+
+	<element name="Communication">
+		<complexType>
+			<sequence>
+				<element name="Header" type="tns:HeaderType"></element>
+				<element name="Body" type="tns:BodyType"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="EmployeeType">
+		<sequence>
+			<element name="Id" type="int"></element>
+			<element name="FirstName" type="string"></element>
+			<element name="LastName" type="string"></element>
+			<element name="Salary" type="double"></element>
+			<element name="DoJ" type="date"></element>
+			<element name="Department" type="tns:DepartmentType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="ExternalReferences"
+				type="tns:ExternalReferenceType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ExternalReferenceType">
+		<sequence>
+			<element name="Type" type="tns:ReferenceType"></element>
+			<element name="Value" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="DepartmentType">
+		<sequence>
+			<element name="Id" type="int"></element>
+			<element name="Name" type="string"></element>
+			<element name="Manager" type="tns:EmployeeType" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Member" type="tns:EmployeeType"
+				maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="ReferenceType">
+		<restriction base="string">
+			<enumeration value="UUID"></enumeration>
+			<enumeration value="GeneratedSequence"></enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<complexType name="HeaderType">
+		<sequence>
+			<element name="CorrelationId" type="string"></element>
+			<element name="Transaction" type="string"></element>
+			<element name="User" type="string"></element>
+			<element name="Country" type="string"></element>
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="BodyType">
+		<sequence>
+			<element name="Pre" type="tns:Snapshot" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="Post" type="tns:Snapshot" maxOccurs="1"
+				minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="Snapshot">
+		<sequence>
+			<element name="Employee" type="tns:EmployeeType"
+				maxOccurs="1" minOccurs="0"></element>
+			<element name="Department" type="tns:DepartmentType"
+				maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>

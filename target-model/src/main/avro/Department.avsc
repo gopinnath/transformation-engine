@@ -1,0 +1,27 @@
+{
+  "name":"Department",
+  "namespace":"com.gopinnath.transformer.example.avro",
+  "type": "record",
+  "fields": [
+      {
+        "name": "id",
+        "type": "int"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "manager",
+        "type": "Employee"
+      },
+      {
+        "name": "members",
+        "type": { 
+      		"type": "array",
+			"items": "Employee",
+			"default": []
+		}
+      }
+   ]
+}
