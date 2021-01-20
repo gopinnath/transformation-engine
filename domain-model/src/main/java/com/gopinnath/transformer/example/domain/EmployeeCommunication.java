@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-public interface EmployeeCommunication extends Communication {
+public abstract class EmployeeCommunication implements Communication {
 	
-	Optional<Employee> pre();
+	public abstract Optional<Employee> pre();
 	
-	Optional<Employee> post();
+	public abstract Optional<Employee> post();
 
 }

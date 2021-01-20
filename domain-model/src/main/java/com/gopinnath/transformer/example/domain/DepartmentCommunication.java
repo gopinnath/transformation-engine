@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.immutables.value.Value;
 
 @Value.Immutable
-public interface DepartmentCommunication extends Communication{
+public abstract class DepartmentCommunication implements Communication{
 
-	Optional<Department> pre();
+	public abstract Optional<Department> pre();
 	
-	Optional<Department> post();
+	public abstract Optional<Department> post();
 }
